@@ -1,5 +1,10 @@
 # Fonts
 
+Current interface: Montserrat Variable, weights 100–900, including Cyrillic. The official Google Fonts webfont subsets are served locally. Montserrat-OFL.txt contains its SIL Open Font License 1.1.
+Source: https://github.com/google/fonts/tree/main/ofl/montserrat
+
+The previous fonts below are retained as source assets and are no longer loaded by the interface.
+
 Satoshi Variable: official Fontshare webfont, weights 300–900.
 Source: https://www.fontshare.com/fonts/satoshi
 License: https://www.fontshare.com/licenses/itf-free-font-license
