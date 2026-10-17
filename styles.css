@@ -411,3 +411,17 @@ body{font-size:18px;font-weight:500;line-height:1.6}
   .connection-dialog label{font-size:13px}
   .connection-dialog label>span{float:none;display:block;font-size:10px}
 }
+
+/* A quiet landing page: Montserrat, centred footage, and plain navigation. */
+.landing{font-family:'Montserrat',sans-serif}
+.landing .site-header{justify-content:flex-start;gap:60px}
+.landing .desktop-nav{margin-left:auto}
+.landing .hero-art video{object-position:center center}
+.landing .hero-assurance{margin-top:34px}
+.landing .bottom-cta h2{margin-bottom:0}
+@media(max-width:760px){
+  .landing .site-header{gap:16px;align-items:center}
+  .landing .desktop-nav{display:flex;gap:0;font-size:11px}
+  .landing .desktop-nav a:not(:last-child){display:none}
+  .landing .hero-assurance{margin-top:26px}
+}

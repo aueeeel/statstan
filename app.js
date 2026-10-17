@@ -3,9 +3,9 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const heroVideo = $('hero-video');
 if (heroVideo) {
   const toggle = document.querySelector('.video-toggle');
-  const update = () => { toggle.textContent = heroVideo.paused ? '▷' : 'Ⅱ'; toggle.setAttribute('aria-label', heroVideo.paused ? 'Воспроизвести фоновое видео' : 'Приостановить фоновое видео'); };
+  const update = () => { if (!toggle) return; toggle.textContent = heroVideo.paused ? '▷' : 'Ⅱ'; toggle.setAttribute('aria-label', heroVideo.paused ? 'Воспроизвести фоновое видео' : 'Приостановить фоновое видео'); };
   if (reducedMotion.matches) heroVideo.pause();
-  toggle.addEventListener('click', () => { if (heroVideo.paused) heroVideo.play().catch(update); else heroVideo.pause(); });
+  toggle?.addEventListener('click', () => { if (heroVideo.paused) heroVideo.play().catch(update); else heroVideo.pause(); });
   heroVideo.addEventListener('play', update); heroVideo.addEventListener('pause', update); update();
 }
 
