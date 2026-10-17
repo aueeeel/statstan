@@ -425,3 +425,16 @@ body{font-size:18px;font-weight:500;line-height:1.6}
   .landing .desktop-nav a:not(:last-child){display:none}
   .landing .hero-assurance{margin-top:26px}
 }
+
+/* Only the centered headline sits over the full-screen video. */
+.landing .hero{height:100svh;min-height:100svh;display:grid;place-items:center}
+.landing .hero-copy{width:min(1240px,calc(100% - 80px));padding:0;margin:0;text-align:center}
+.landing .hero h1{margin:0;font-size:clamp(64px,7.1vw,112px);line-height:1.03;text-align:center}
+.landing .hero-art-wash{background:radial-gradient(ellipse at center,#edededb0 0%,#ededed66 57%,#b8adef20 100%),linear-gradient(180deg,#ededed70,transparent 30%)}
+.landing .hero:after{background:none}
+@media(max-width:760px){
+  .landing .hero{height:100svh;min-height:100svh}
+  .landing .hero-copy{width:calc(100% - 40px);padding:0}
+  .landing .hero h1{font-size:clamp(36px,10.4vw,68px);line-height:1.06;letter-spacing:-.045em}
+  .landing .hero-art-wash{background:radial-gradient(ellipse at center,#edededb8,#ededed66 65%,#b8adef22),linear-gradient(180deg,#ededed88,transparent 35%)}
+}
