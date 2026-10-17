@@ -11,6 +11,23 @@ if (heroVideo) {
 
 if ($('file-input')) initWorkspace();
 
+function setButtonLoading(button, loading) {
+  button.setAttribute('aria-busy', String(loading));
+  const label = button.querySelector('.native-button-content');
+  if (loading && !label) {
+    const content = document.createElement('span');
+    content.className = 'native-button-content';
+    content.append(...button.childNodes);
+    const spinner = document.createElement('span');
+    spinner.className = 'native-button-spinner';
+    spinner.setAttribute('aria-hidden', 'true');
+    button.append(spinner, content);
+  } else if (!loading && label) {
+    button.querySelector('.native-button-spinner')?.remove();
+    label.replaceWith(...label.childNodes);
+  }
+}
+
 function initWorkspace() {
   let file = null, objectUrl = null, report = null, isDemo = false, controller = null;
   let apiBase = window.FORTE_CONFIG?.apiBaseUrl || localStorage.getItem('forte-api-base') || '';
@@ -43,6 +60,7 @@ function initWorkspace() {
     $('file-information').hidden = true; $('analyze-button').disabled = true;
     $('demo-scene').hidden = true; video.hidden = false;
     $('analysis-progress').hidden = true; $('video-tag').textContent = 'НОВАЯ ПРОВЕРКА';
+    setButtonLoading($('analyze-button'), false);
     $('analyze-button').innerHTML = 'Начать проверку <span>↗</span>';
     resetReport(); showError('');
   }
@@ -120,6 +138,7 @@ function initWorkspace() {
   $('cancel-analysis').addEventListener('click', () => { controller?.abort(); demoRun++; if (isDemo) setProcessing(false); });
   function setProcessing(active, label = '', percent = 0) {
     $('analysis-progress').hidden = !active; $('analyze-button').disabled = active || (!file && !isDemo);
+    setButtonLoading($('analyze-button'), active);
     $('remove-file').disabled = active; $('demo-button').disabled = active;
     if (active) { $('progress-label').textContent = label; $('progress-bar').style.width = `${percent}%`; }
   }
